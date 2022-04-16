@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "formik": "^2.2.9",
+    "json-server": "^0.17.0",
     "yup": "^0.32.11"
   }
 }
