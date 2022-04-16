@@ -1,0 +1,68 @@
+{
+  "clientes": [
+    {
+      "nombre": "Leonidas",
+      "empresa": "caja los andes",
+      "email": "wilsonwindows123@gmail.com",
+      "telefono": 912805678,
+      "notas": "heyyyy",
+      "id": 3
+    },
+    {
+      "nombre": "wilson Vargas",
+      "empresa": "caja los andes",
+      "email": "leo123@gmail.com",
+      "telefono": 951481327,
+      "notas": "hola mundo",
+      "id": 4
+    },
+    {
+      "nombre": "wilson Vargas",
+      "empresa": "caja los andes",
+      "email": "leo123@gmail.com",
+      "telefono": 951481327,
+      "notas": "hola mundo",
+      "id": 5
+    },
+    {
+      "nombre": "Wilberth",
+      "empresa": "caja los andes",
+      "email": "wilbert@gmail.com",
+      "telefono": 912805678,
+      "notas": "Soy wilberth",
+      "id": 6
+    },
+    {
+      "nombre": "nacho",
+      "empresa": "galeno",
+      "email": "nacho@123.com",
+      "telefono": 912457878,
+      "notas": "siuuu",
+      "id": 7
+    },
+    {
+      "nombre": "Sonia",
+      "empresa": "contabilidad",
+      "email": "sonivar72@gmail.com",
+      "telefono": 951665896,
+      "notas": "sonia esta de fuga",
+      "id": 8
+    },
+    {
+      "nombre": "Carlos",
+      "empresa": "scotiabank",
+      "email": "carlo1263@gmail.com",
+      "telefono": 954875458,
+      "notas": "estoy aqui en busca de oportunidades",
+      "id": 9
+    },
+    {
+      "nombre": "prueba",
+      "empresa": "caja los andes ",
+      "email": "prueb@gmail.com",
+      "telefono": 912805678,
+      "notas": "heyy ",
+      "id": 10
+    }
+  ]
+}

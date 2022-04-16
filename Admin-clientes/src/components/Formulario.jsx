@@ -2,8 +2,10 @@ import React from 'react'
 import {Formik ,Form, Field,ErrorMessage} from 'formik'
 import *as Yup from 'yup'
 import ErrorFrm from './ErrorFrm'
+import {useNavigate} from 'react-router-dom'
 
 const Formulario = () => {
+   const navigate = useNavigate()
    // const modificarInput=(e)=>{
    //    const nombre = document.querySelector("#name");
    //    nombre.classList.add("border-blue-500")
@@ -36,6 +38,26 @@ const Formulario = () => {
          .min(5,"Ingrese una nota mas larga")      
 
    })
+   const enviarValores = async(values)=>{
+      console.log(values)
+      try {
+         const url = "http://localhost:4000/clientes"
+         const respuesta = await fetch(url,{
+            method:'POST',
+            body: JSON.stringify(values),
+            headers:{
+               'Content-Type':'application/json'
+            }
+
+         })
+         console.log(respuesta)
+         const resultado = await respuesta.json()
+         console.log(resultado);
+         
+      } catch (error) {
+         console.log(error)
+      }
+   }
   return (
     <div className='ml-5 mt-3'>
       <p>Llena todos los campos para registrar un cliente</p>
@@ -51,8 +73,10 @@ const Formulario = () => {
                notas:''
             }}
             validationSchema={validarFormulario}
-            onSubmit={(values)=>{
-               console.log(values)
+            onSubmit={ async(values,{resetForm})=>{
+               await enviarValores(values)
+               resetForm()
+               navigate('/clientes')
             }}
 
          >
