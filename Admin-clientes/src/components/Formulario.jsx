@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import {Formik ,Form, Field,ErrorMessage} from 'formik'
 import *as Yup from 'yup'
 import ErrorFrm from './ErrorFrm'
@@ -52,7 +53,6 @@ const Formulario = () => {
          })
          console.log(respuesta)
          const resultado = await respuesta.json()
-         console.log(resultado);
          
       } catch (error) {
          console.log(error)
