@@ -12,7 +12,7 @@ const ModalEditar = ({idCliente,setModalEditar,setDatos,datos,setNombreFrm,nombr
          //TRAER LOS DATOS DEL CLIENTE
          setCargando(true)
          const getDatos = async()=>{
-            const url =`http://localhost:4000/clientes/${idCliente}`
+            const url =`${import.meta.env.VITE_API_URL}/${idCliente}`
             const respuesta = await fetch(url)
             const resultado = await respuesta.json()
             console.log(resultado)

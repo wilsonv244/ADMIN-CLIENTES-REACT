@@ -9,6 +9,7 @@ import ModalEditar from './components/ModalEditar'
 function App() {
 
   const [nombreFrm, setNombreFrm] = useState("Registrar Nuevo Cliente")
+  console.log(import.meta.env.VITE_API_URL)
   
   return (
     <BrowserRouter>

@@ -5,7 +5,7 @@ const Inicio = ({setNombreFrm,nombreFrm}) => {
   
   useEffect(() => {
     const getDatos = async()=>{
-      const url = "http://localhost:4000/clientes"
+      const url = import.meta.env.VITE_API_URL
       const respuesta = await fetch(url)
       const resultado = await respuesta.json()
       setDatos(resultado)
@@ -19,7 +19,7 @@ const Inicio = ({setNombreFrm,nombreFrm}) => {
     console.log(ed) 
     if(confirmar){
       try {
-        const url =`http://localhost:4000/clientes/${ed}`
+        const url =`${import.meta.env.VITE_API_URL}/${ed}`
         const respuesta = await fetch(url,{
           method:"DELETE"
         })

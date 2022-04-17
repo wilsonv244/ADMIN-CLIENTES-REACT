@@ -10,7 +10,7 @@ const VerClientes = () => {
       const getDatosId = async()=>{
          setCargando(true)
          try {
-            const url = `http://localhost:4000/clientes/${urlId}`
+            const url = `${import.meta.env.VITE_API_URL}/${urlId}`
             const respuesta =  await fetch(url)
             const resultado = await respuesta.json()
             console.log(resultado)

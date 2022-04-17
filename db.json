@@ -25,12 +25,20 @@
       "id": 10
     },
     {
-      "nombre": "JULIO INGLESIAS",
+      "nombre": "JULIO CASAS",
       "empresa": "GOOGLE",
       "email": "wilbert@gmail.com",
       "telefono": 482485452,
       "notas": "heeeeeee",
       "id": 11
+    },
+    {
+      "nombre": "aydee editado",
+      "empresa": "medicina legal",
+      "email": "heydi@gmail.com",
+      "telefono": 912805678,
+      "notas": "desde layout",
+      "id": 12
     }
   ]
 }
