@@ -5,7 +5,7 @@ import *as Yup from 'yup'
 import ErrorFrm from './ErrorFrm'
 import {useNavigate} from 'react-router-dom'
 
-const Formulario = () => {
+const Formulario = ({editarCliente,setModalEditar,nombreFrm}) => {
    const navigate = useNavigate()
    // const modificarInput=(e)=>{
    //    const nombre = document.querySelector("#name");
@@ -41,36 +41,62 @@ const Formulario = () => {
    })
    const enviarValores = async(values)=>{
       console.log(values)
-      try {
-         const url = "http://localhost:4000/clientes"
-         const respuesta = await fetch(url,{
-            method:'POST',
-            body: JSON.stringify(values),
-            headers:{
-               'Content-Type':'application/json'
-            }
+      let respuesta;
+      if(editarCliente.id){
+         try {
+            //editando el registro
+            const url = `http://localhost:4000/clientes/${editarCliente.id}`
+            respuesta = await fetch(url,{
+               method:'PUT',
+               body: JSON.stringify(values),
+               headers:{
+                  'Content-Type':'application/json'
+               }
+   
+            })
 
-         })
-         console.log(respuesta)
-         const resultado = await respuesta.json()
-         
-      } catch (error) {
-         console.log(error)
+            setModalEditar(false)
+            navigate('/nuevo')
+            // location.reload()
+            
+            
+            
+         } catch (error) {
+            console.log(error)
+         }
+      }else{
+         //crear un nuevo registro
+         try {
+            const url = "http://localhost:4000/clientes"
+            respuesta = await fetch(url,{
+               method:'POST',
+               body: JSON.stringify(values),
+               headers:{
+                  'Content-Type':'application/json'
+               }
+   
+            })
+            
+         } catch (error) {
+            console.log(error)
+         }
       }
+      console.log(respuesta)
+      const resultado = await respuesta.json()
+      console.log(resultado)
    }
   return (
     <div className='ml-5 mt-3'>
       <p>Llena todos los campos para registrar un cliente</p>
       <div className='m-auto max-w-3xl mt-7 bg-blue-50 p-7 rounded-xl shadow-lg'>
-         <p className='text-center  font-bold'>AGREGAR CLIENTE</p>
 
          <Formik
             initialValues={{
-               nombre:'',
-               empresa:'',
-               email:'',
-               telefono:'',
-               notas:''
+               nombre:editarCliente.nombre??"",
+               empresa:editarCliente.empresa??"",
+               email:editarCliente.email??"",
+               telefono:editarCliente.telefono??"",
+               notas:editarCliente.notas??""
             }}
             validationSchema={validarFormulario}
             onSubmit={ async(values,{resetForm})=>{
@@ -78,6 +104,7 @@ const Formulario = () => {
                resetForm()
                navigate('/clientes')
             }}
+            enableReinitialize={true}
 
          >
             {(data)=>{
@@ -95,7 +122,7 @@ const Formulario = () => {
                      name="nombre"
                   />
                   {/* <ErrorMessage name="nombre" className='bg-red-500'/> */}
-                  {data.errors.nombre ?
+                  {data.errors.nombre?
                         <ErrorFrm
                            mensaje={data.errors.nombre}
                         />
@@ -179,7 +206,7 @@ const Formulario = () => {
                      }
                </div>
                <input type="submit"
-                  value="Registrar Nuevo Cliente"
+                  value={nombreFrm}
                   className='w-full p-2 bg-red-300 rounded-xl font-black cursor-pointer'
                   
                />
@@ -189,6 +216,9 @@ const Formulario = () => {
       </div>
     </div>
   )
+}
+Formulario.defaultProps={
+   editarCliente:{}
 }
 
 export default Formulario

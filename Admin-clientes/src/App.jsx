@@ -3,17 +3,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Inicio from './paginas/Inicio'
 import NuevoCliente from './paginas/NuevoCliente'
-import EditarCliente from './paginas/EditarCliente' 
 import Layout from './layout/Loyout'
+import VerClientes from './components/VerClientes'
+import ModalEditar from './components/ModalEditar'
 function App() {
 
+  const [nombreFrm, setNombreFrm] = useState("Registrar Nuevo Cliente")
+  
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/clientes' element={<Layout/>}>
-          <Route index element={<Inicio/>}/>
+          <Route index element={<Inicio
+            setNombreFrm={setNombreFrm}
+            nombreFrm={nombreFrm}
+          />}/>
           <Route path='nuevo' element={<NuevoCliente/>}/>
-          <Route path='editar' element={<EditarCliente/>}/>
+          <Route path=':id' element={<VerClientes/>}/>
+          <Route path='modla' element={<ModalEditar/>}/>
           
         </Route>
       </Routes>
